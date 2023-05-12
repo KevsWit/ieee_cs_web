@@ -1,0 +1,145 @@
+@charset "UTF-8";
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+h1 {
+    color: #000A7B;
+    text-align: center;
+    font-family: arial;
+    font-size: 40px;
+    text-shadow: 3px 3px 2px #13949D;
+}
+h2 {
+    color: #000A7B;
+    font-family: arial;
+    font-size: 30px;
+}
+h3 {
+	color: #000A7B;
+	font-family: arial;
+}
+section {
+	font-family: arial;
+	font-size: 20px;
+	padding-bottom: 10px;
+	padding-right: 5px;
+	padding-top: 10px;
+}
+aside{
+	width: 50%;
+	float: right;
+	font-size: px;
+	align-items: center;
+	text-align: center;
+	padding-bottom: 15px;
+	padding-left: 5px;
+	margin: auto;
+}
+p {
+	font-family: arial;
+	font-size: 20px;
+}
+nav{
+	display: block;
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+nav ul li a{
+	color: #202020;
+	text-align: center;
+	padding: 12px;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 5px;
+}
+nav ul li a:hover {
+	background-color: #337ab7;
+	border: 1px solid #337ab7;
+	color: White; 
+}
+nav ul li a:active {
+	background-color: dodgerblue;
+	border: 1px solid gray;
+	color: white;
+}
+footer {
+	display: block;
+	background-color: #000A7B;
+  	padding: 10px;
+  	color: white;
+	overflow: hidden;
+	clear: both;
+}
+footer li{
+	list-style: none;
+	font: bold 15px trebuchet ms;
+	padding: 5px;
+	display: inline-block;
+	text-align: center;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #B8C5DB;
+}
+
+tr:nth-child(odd) {
+  background-color: dodgerblue;
+}
+
+input[type="submit"], input[type="reset"] {
+  background-color: white;
+  color: black;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+  background-color: #ddd;
+}
+.center-content {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin: auto;
+}
+.section-l{
+	width: 50%;
+	float: left;
+	align-items: center;
+	text-align: center;
+}
+.normal{
+	width: 60%;
+	margin: auto;
+}
+.enlace-footer{
+	font-size: 20px;
+	color: white;
+}
+:focus{
+	outline: 3px solid #FFD100;
+}
