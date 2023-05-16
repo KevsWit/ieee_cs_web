@@ -38,7 +38,7 @@
 			<p>
 		</section>
 		<div style="height: auto; border-radius: 10px;" class="center-content">
-    		<form action="" method="post" name="formulario">
+    		<form action="verificarRegistro.jsp" method="post" name="formulario">
 			    <table>
 			      <tr>
 			        <td>Nombre:</td>
@@ -50,7 +50,7 @@
 			      </tr>
 			      <tr>
 			        <td>Correo:</td>
-			        <td><input type="text" name="correo" required="required">*</td>
+			        <td><input type="email" name="correo" required="required">*</td>
 			      </tr>
 			      <tr>
 			        <td>Clave:</td>
@@ -58,7 +58,7 @@
 			      </tr>
 			      <tr>
 			        <td>Foto:</td>
-			        <td><input type="file" name="foto"></td>
+			        <td><input type="file" name="foto" accept=".jpg, .jpeg, .png" required="required">*</td>
 			      </tr>
 			      <tr>
 			        <td><input type="submit"></td>

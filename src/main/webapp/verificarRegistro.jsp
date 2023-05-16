@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="ISO-8859-1" session="true" import="com.ieee.seguridad.*"%>
+<%@ page language="java" import="javax.servlet.http.Part"%>
+<%@ page language="java" import="java.util.*"%>       
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/styles.css" rel="stylesheet" type="text/css">
-	<title>IEEE CS - Ingresar al sitio</title>
+	<title>IEEE CS - Registrarse</title>
 </head>
 <body>
 	<header>
@@ -16,7 +18,7 @@
 	</header>
 	<nav class="center-content">
 		<ul>
-        	<li><a href="informacion.jsp">InformaciÃ³n</a></li>
+        	<li><a href="informacion.jsp">Información</a></li>
         	<li><a href="eventos.jsp">Eventos</a></li>
         	<li><a href="registrarse.jsp">Registrarse</a></li>
         	<li><a href="desarrolladores.jsp">Desarrolladores</a></li>
@@ -27,30 +29,37 @@
 		<hr>
 		<section style="color: #0014B7; justify-content: center; display: flex;" class="normal">
 			<p>
-			<i>Avance de la tecnologÃ­a para el beneficio de la humanidad</i>
+			<i>Avance de la tecnología para el beneficio de la humanidad</i>
 			<p>
 		</section>
 		<section style="color: black; justify-content: center; align-items: center;" class="normal">
-			<h1>Ingresa al sitio</h1>
+			<h1>Registrarse</h1>
 		</section>
 		<div style="height: auto; border-radius: 10px;" class="center-content">
-    		<form action="verificarLogin.jsp" method="post" name="formulario">
-			    <table>
-			      <tr>
-			        <td>Correo:</td>
-			        <td><input type="email" name="correo" required="required">*</td>
-			      </tr>
-			      <tr>
-			        <td>Clave:</td>
-			        <td><input type="password" name="clave" required="required">*</td>
-			      </tr>
-			      <tr>
-			        <td><input type="submit"></td>
-			        <td><input type="reset"></td>
-			      </tr>
-			    </table>
-			    <h3 style="text-align: center;">*Campo obligatorio</h3>
-			</form>
+    				<%
+		Usuario usuario=new Usuario();
+		String nlogin=request.getParameter("correo");
+		String nclave=request.getParameter("clave");
+		HttpSession sesion=request.getSession(); //Se crea la variable de sesión
+		boolean respuesta=usuario.verificarUsuario(nlogin,nclave);
+		if (!respuesta)
+		{
+		String nombre=request.getParameter("nombre");
+		String stredad=request.getParameter("edad");
+		int edad=Integer.parseInt(stredad);
+		String directorio=request.getParameter("foto");
+		usuario.ingresarUsuario(nlogin, nclave, nombre, edad, directorio, "", "");
+		response.sendRedirect("login.jsp"); //Se redirecciona al login
+		}
+		else
+		{
+		%>
+		<jsp:forward page="registrarse.jsp">
+		<jsp:param name="error" value="Datos incorrectos.<br>Vuelva a intentarlo."/>
+		</jsp:forward>
+		<%
+		}
+		%>
 		</div>
 	</main>
 	<footer style="margin-top: 15px;">
