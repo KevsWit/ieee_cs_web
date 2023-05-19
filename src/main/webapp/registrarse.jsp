@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -57,8 +58,8 @@
 			        <td><input type="password" name="clave" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Foto:</td>
-			        <td><input type="file" name="foto" accept=".jpg, .jpeg, .png" required="required">*</td>
+			        <td>Path Foto:</td>
+			        <td><b>Ingresar un formato .jpeg</b><br><input type="text" name="foto" required="required">*</td>
 			      </tr>
 			      <tr>
 			        <td><input type="submit"></td>

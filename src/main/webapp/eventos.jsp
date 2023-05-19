@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="ISO-8859-1" session="true" import="com.ieee.seguridad.*"%>
+<%@ page import="com.ieee.eventos.*" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<title>IEEE CS - Eventos</title>
 </head>
 <body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	<header>
 		<div align="center">
 	        <a href="index.jsp"><img src="images/logo.png" width="400em" alt="Logo IEEE Computer Society" title="Logo IEEE Computer Society"></a>
@@ -16,7 +19,7 @@
 	</header>
 	<nav class="center-content">
 		<ul>
-        	<li><a href="informacion.jsp">Informaci√≥n</a></li>
+        	<li><a href="informacion.jsp">InformaciÛn</a></li>
         	<li><a href="eventos.jsp">Eventos</a></li>
         	<li><a href="registrarse.jsp">Registrarse</a></li>
         	<li><a href="desarrolladores.jsp">Desarrolladores</a></li>
@@ -27,27 +30,20 @@
 		<hr>
 		<section style="color: #0014B7; justify-content: center; display: flex;" class="normal">
 			<p>
-			<i>Avance de la tecnolog√≠a para el beneficio de la humanidad</i>
+			<i>Avance de la tecnologÌa para el beneficio de la humanidad</i>
 			<p>
 		</section>
 		<section style="color: black; justify-content: center; align-items: center;" class="normal">
 			<h1>Eventos</h1>
 			<p>
-			Desde conferencias t√©cnicas de renombre internacional hasta seminarios especializados y workshops, nuestra agenda de eventos est√° dise√±ada para reunir a profesionales, acad√©micos, investigadores y estudiantes de diversos campos de la ingenier√≠a el√©ctrica, electr√≥nica y tecnolog√≠as de la informaci√≥n.
-			<br>Aqu√≠ encontrar√°s un entorno propicio para compartir conocimientos, explorar las √∫ltimas tendencias y establecer contactos con personas apasionadas por la tecnolog√≠a.
+			Desde conferencias tÈcnicas de renombre internacional hasta seminarios especializados y workshops, nuestra agenda de eventos est· diseÒada para reunir a profesionales, acadÈmicos, investigadores y estudiantes de diversos campos de la ingenierÌa elÈctrica, electrÛnica y tecnologÌas de la informaciÛn.
+			<br>AquÌ encontrar·s un entorno propicio para compartir conocimientos, explorar las ˙ltimas tendencias y establecer contactos con personas apasionadas por la tecnologÌa.
 			<p>
 		</section>
-		<div style="height: auto; border-radius: 10px; border: 1px solid grey;" class="center-content">
-    		<section class="section-l" style="color: black;">
-      			<img src="images/WIE_IEEE.jpg" width="300em">
-    		</section>
-			<aside style="color: black; border-left: 3px solid #3B0E7B;">
-				<h3 style="text-align: left;">NI√ëAS EN LAS TICS</h3>
-      			<p style="text-align: left">
-      			Descripci√≥n: estudiantes de tercero de bachillerato de la UNIDAD EDUCATIVA CAT√ìLICA PARTICULAR RAFAEL BUCHELI, recibieron Talleres de Mantenimiento de Computadoras por parte del Cap√≠tulo T√©cnico IEEE CS UPS UIO y Electricidad B√°sica por parte del Cap√≠tulo T√©cnico IEEE PES UPS UIO.
-      			</p>
-			</aside>
-		</div>
+		<%
+			Evento eve = new Evento();
+			out.print(eve.consultarTodo());
+		%>
 	</main>
 	<footer style="margin-top: 15px;">
 	  	<ul style="justify-content: center; display: flex;">

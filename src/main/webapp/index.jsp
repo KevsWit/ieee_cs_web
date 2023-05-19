@@ -45,6 +45,9 @@
 				<a href="https://ieeexplore.ieee.org/Xplore/home.jsp"><img src="images/ieeexplore.png" width="auto" height="200em" alt="Logo IEEE Xplore" title="Logo IEEE Xplore"></a>
 			</aside>
 		</div>
+		<section class="normal">
+			<a href="membresia.jsp">Ver membresías</a>
+		</section>
 	</main>
 	<footer style="margin-top: 15px;">
 	  	<ul style="justify-content: center; display: flex;">

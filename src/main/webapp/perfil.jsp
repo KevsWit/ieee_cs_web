@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1" session="true" import="com.ieee.seguridad.*"%>
 <!DOCTYPE html>
-<%@ page language="java" import="javax.swing.ImageIcon"%>
-<%@ page language="java" import="java.io.ByteArrayOutputStream"%>
-<%@ page language="java" import="javax.imageio.ImageIO"%>
-<%@ page language="java" import="java.util.Base64"%>
-<%@ page language="java" import="java.awt.image.BufferedImage"%>
-<%@ page language="java" import="javax.imageio.stream.MemoryCacheImageOutputStream"%>
-<%@ page language="java" import="java.io.IOException"%>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
@@ -67,20 +60,9 @@ out.print(menu);
 			<%
 			Usuario usr = new Usuario();
 			boolean resp = usr.obtenerUsuario(usuario);
-			String dir;
-			if (usr.getFoto()== null){
-				dir="";
-			}
-			else{
-				dir=usr.getFoto().getDescription();
-			}
-			if(dir==null){
-				dir="";
-			}
-			System.out.print(dir);
 			%>
     		<section class="section-l" style="color: black;">
-      			<img src="<%= dir %>" width="300em">
+      			<img src="data:image/jpeg;base64, <%= usr.getFoto() %>" width="300em" alt="Foto usuario">
     		</section>
 			<aside style="color: black;">
 				<h3 style="text-align: left;">Nombre</h3>
