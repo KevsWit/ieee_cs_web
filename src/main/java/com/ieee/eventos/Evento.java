@@ -195,7 +195,7 @@ public class Evento {
 			while(rs.next()) {
 				tabla += "<tr>"
 						+ "<td><pre style=\"text-align: center\">"+rs.getInt(1)+"</pre></td>"
-						+ "<td><pre style=\"text-align: center\">"+rs.getString(2)+"</pre></td>"
+						+ "<td><p style=\"text-align: left\">"+rs.getString(2)+"</p></td>"
 						+ "<td><a href= buscarEvento.jsp?cod="+rs.getInt(1)+"><pre style=\"text-align: center\">Modificar</pre></a></td>"
 						+ "<td><a href= eliminarEvento.jsp?cod="+rs.getInt(1)+"><pre style=\"text-align: center\">Eliminar</pre></a></td>"
 						+ "<td><a href= agregarFoto.jsp?cod="+rs.getInt(1)+"><pre style=\"text-align: center\">Agregar Foto</pre></a></td>"
