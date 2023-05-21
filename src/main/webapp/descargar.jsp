@@ -1,14 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1" session="true" import="com.ieee.seguridad.*"%>
-<%@ page import="com.ieee.eventos.*" %>
- 
+ <%@ page import="java.io.FileInputStream" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.io.OutputStream" %>
+<%@ page import="javax.servlet.http.HttpServletResponse" %>
+<%@ page import="java.nio.file.Files" %>
+<%@ page import="java.nio.file.Path" %>
+<%@ page import="java.nio.file.StandardCopyOption" %>
+<%@ page import="java.io.InputStream" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/styles.css" rel="stylesheet" type="text/css">
-	<title>IEEE CS -Gestión de membresías</title>
+	<title>IEEE CS -Gestión de postulaciones</title>
 </head>
 <body>
 	<header>
@@ -27,7 +33,7 @@
 	</nav>
 	<main>
 		    				<%
-String usuario;
+String usuario="";
 HttpSession sesion = request.getSession();
  if (sesion.getAttribute("usuario") == null) //Se verifica si existe la variable
  {
@@ -41,9 +47,6 @@ HttpSession sesion = request.getSession();
  {
  usuario=(String)sesion.getAttribute("usuario"); //Se devuelve los valores de atributos
  int perfil=(Integer)sesion.getAttribute("perfil");
- Pagina pag=new Pagina();
- String menu=pag.mostrarMenu(perfil);
- out.print(menu);
  }
  %>
 		<hr>
@@ -53,39 +56,33 @@ HttpSession sesion = request.getSession();
 			<p>
 		</section>
 		<section style="color: black; justify-content: center; align-items: center;" class="normal">
-			<h1>Agregar Membresía</h1>
+			<h1>Descargar CV</h1>
 		</section>
-		<div style="height: auto; border-radius: 10px;" class="center-content">
+		<section style="color: black; justify-content: center; align-items: center;" class="normal">
 			<%
+				String correo = request.getParameter("cod");
 				Usuario usr = new Usuario();
-				int id = usr.membresiaMID()+1;
+				byte[] byteaData = usr.obtenerCV(correo);
 			%>
-    		<form action="respuestaMembresia.jsp" method="post">
-			    <table>
-			      <tr>
-			        <td>ID membresia:</td>
-			        <td><input type="text" name="id_membresia" required="required" value="<%=id %>" readonly="readonly">*</td>
-			      </tr>
-			      <tr>
-			        <td>Descripcion:</td>
-			        <td><input type="text" name="descripcion" required="required">*</td>
-			      </tr>
-			      <tr>
-			        <td>Costo Society Member:</td>
-			        <td><input type="text" name="costo_sm" required="required">*</td>
-			      </tr>
-			      <tr>
-			        <td>Costo Society Student Member:</td>
-			        <td><input type="text" name="costo_ssm" required="required">*</td>
-			      </tr>
-			      <tr>
-			        <td><input type="submit"></td>
-			        <td><input type="reset"></td>
-			      </tr>
-			    </table>
-			    <h3 style="text-align: center;">*Campo obligatorio</h3>
-			</form>
-		</div>
+<% String fileName = correo+"_CV.pdf"; %>
+<% Path tempFilePath = Files.createTempFile("temp-", ".pdf"); %>
+<% Files.write(tempFilePath, byteaData); %>
+<% response.setContentType("application/pdf"); %>
+<% response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\""); %>
+<% try (InputStream inputStream = new FileInputStream(tempFilePath.toFile());
+       OutputStream outputStream = response.getOutputStream()) {
+       int bytesRead;
+       byte[] buffer = new byte[4096];
+       while ((bytesRead = inputStream.read(buffer)) != -1) {
+           outputStream.write(buffer, 0, bytesRead);
+       }
+   } catch (IOException e) {
+       e.printStackTrace();
+   }
+%>
+
+<% Files.delete(tempFilePath); %>
+		</section>
 	</main>
 	<footer style="margin-top: 15px;">
 	  	<ul style="justify-content: center; display: flex;">

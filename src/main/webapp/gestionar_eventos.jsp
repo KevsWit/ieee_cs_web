@@ -40,6 +40,9 @@ HttpSession sesion = request.getSession();
  {
  usuario=(String)sesion.getAttribute("usuario"); //Se devuelve los valores de atributos
  int perfil=(Integer)sesion.getAttribute("perfil");
+ Pagina pag=new Pagina();
+ String menu=pag.mostrarMenu(perfil);
+ out.print(menu);
  }
  %>
 		<hr>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1" session="true" import="com.ieee.seguridad.*"%>
-<%@ page import="com.ieee.eventos.*" %>
  
 <!DOCTYPE html>
 <html lang="es">
@@ -8,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/styles.css" rel="stylesheet" type="text/css">
-	<title>IEEE CS -Gestión de membresías</title>
+	<title>IEEE CS -Cambio de clave</title>
 </head>
 <body>
 	<header>
@@ -27,7 +26,7 @@
 	</nav>
 	<main>
 		    				<%
-String usuario;
+String usuario="";
 HttpSession sesion = request.getSession();
  if (sesion.getAttribute("usuario") == null) //Se verifica si existe la variable
  {
@@ -41,9 +40,6 @@ HttpSession sesion = request.getSession();
  {
  usuario=(String)sesion.getAttribute("usuario"); //Se devuelve los valores de atributos
  int perfil=(Integer)sesion.getAttribute("perfil");
- Pagina pag=new Pagina();
- String menu=pag.mostrarMenu(perfil);
- out.print(menu);
  }
  %>
 		<hr>
@@ -53,39 +49,37 @@ HttpSession sesion = request.getSession();
 			<p>
 		</section>
 		<section style="color: black; justify-content: center; align-items: center;" class="normal">
-			<h1>Agregar Membresía</h1>
+			<h1>Cambiar clave</h1>
 		</section>
-		<div style="height: auto; border-radius: 10px;" class="center-content">
+		<section style="color: black; justify-content: center; align-items: center;" class="normal">
 			<%
 				Usuario usr = new Usuario();
-				int id = usr.membresiaMID()+1;
+				String pwd_old = request.getParameter("pwd_old");
+				String pwd_new = request.getParameter("pwd_new");
+				String pwd_newConf = request.getParameter("pwd_newConf");
+				boolean verificacion = false;
+				boolean cambiar = false;
+				if (pwd_old.equals(usr.obtenerClave(usuario))){
+					verificacion = true;
+				}else{
+					out.print("Su contraseña anterior no coincide"+"<br>");
+				}
+				if (pwd_new.equals(pwd_newConf)){
+					cambiar = true;
+				}else{
+					out.print("La confirmación de contraseña no coincide"+"<br>");
+				}
+				if (verificacion && cambiar){
+					if(usr.cambiarClave(usuario, pwd_new)){
+						out.print("Se ha cambiado la clave"+"<br>");
+						response.sendRedirect("cerrar_sesion.jsp");
+					}
+				}else{
+					out.print("Algo no salió bien"+"<br>");
+				}
 			%>
-    		<form action="respuestaMembresia.jsp" method="post">
-			    <table>
-			      <tr>
-			        <td>ID membresia:</td>
-			        <td><input type="text" name="id_membresia" required="required" value="<%=id %>" readonly="readonly">*</td>
-			      </tr>
-			      <tr>
-			        <td>Descripcion:</td>
-			        <td><input type="text" name="descripcion" required="required">*</td>
-			      </tr>
-			      <tr>
-			        <td>Costo Society Member:</td>
-			        <td><input type="text" name="costo_sm" required="required">*</td>
-			      </tr>
-			      <tr>
-			        <td>Costo Society Student Member:</td>
-			        <td><input type="text" name="costo_ssm" required="required">*</td>
-			      </tr>
-			      <tr>
-			        <td><input type="submit"></td>
-			        <td><input type="reset"></td>
-			      </tr>
-			    </table>
-			    <h3 style="text-align: center;">*Campo obligatorio</h3>
-			</form>
-		</div>
+			<a href="cambiar_clave.jsp">Cambiar Clave</a>
+		</section>
 	</main>
 	<footer style="margin-top: 15px;">
 	  	<ul style="justify-content: center; display: flex;">

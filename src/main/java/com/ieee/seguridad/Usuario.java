@@ -289,8 +289,8 @@ public class Usuario {
 				while(rs.next()) {
 					tabla += "<tr>"
 							+ "<td><pre style=\"text-align: center\">"+rs.getString(1)+"</pre></td>"
-							+ "<td><pre style=\"text-align: center\">"+rs.getString(2)+"</pre></td>"
-							+ "<td><pre style=\"text-align: center\">"+"PDF"+"</pre></td>"
+							+ "<td><p style=\"text-align: left\">"+rs.getString(2)+"</p></td>"
+							+ "<td><a href= descargar.jsp?cod="+rs.getString(1)+"><pre style=\"text-align: center\">DESCARGAR</pre></a></td>"
 							+ "<td><a href= aceptar.jsp?cod="+rs.getString(1)+"><pre style=\"text-align: center\">ACEPTAR</pre></a></td>"
 							+ "<td><a href= rechazar.jsp?cod="+rs.getString(1)+"><pre style=\"text-align: center\">RECHAZAR</pre></a></td>"
 							+ "</tr>";
@@ -307,7 +307,7 @@ public class Usuario {
 			Conexion con=new Conexion();
 			String sql = "UPDATE public.\"tb_infoPostulacion\""
 					+ "	SET estado='Aceptada'"
-					+ "	WHERE correo LIKE '%"+correo+"%';";
+					+ "	WHERE correo LIKE '%"+correo+"';";
 
 			try {
 				con.Ejecutar(sql);
@@ -323,7 +323,7 @@ public class Usuario {
 			Conexion con=new Conexion();
 			String sql = "UPDATE public.\"tb_infoPostulacion\""
 					+ "	SET estado='Rechazada'"
-					+ "	WHERE correo LIKE '%"+correo+"%';";
+					+ "	WHERE correo LIKE '%"+correo+"';";
 
 			try {
 				con.Ejecutar(sql);
@@ -339,7 +339,7 @@ public class Usuario {
 			ResultSet rs = null;
 			String sql = "SELECT estado"
 					+ "	FROM public.\"tb_infoPostulacion\""
-					+ "	WHERE correo LIKE '%"+correo+"%';";
+					+ "	WHERE correo LIKE '%"+correo+"';";
 			String resp="";
 				rs=con.Consulta(sql);
 				try {
@@ -435,5 +435,53 @@ public class Usuario {
 			tabla+="</table>";
 			return tabla;
 		}
+		public byte[]obtenerCV(String correo){
+			String sql="SELECT cv FROM public.\"tb_infoPostulacion\" WHERE correo LIKE '%"+correo+"';";
+			Conexion con=new Conexion();
+			byte[] arch = null;
+			ResultSet rs=null;
+			rs=con.Consulta(sql);
+			try {
+				while(rs.next()) {
+					arch=rs.getBytes(1);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return arch;
+		}
+		public String obtenerClave(String correo) {
+			String sql="SELECT clave FROM public.tb_usuario WHERE correo LIKE '%"+correo+"';";
+			Conexion con=new Conexion();
+			String pwd = "";
+			ResultSet rs=null;
+			rs=con.Consulta(sql);
+			try {
+				while(rs.next()) {
+					pwd=rs.getString(1);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return pwd;
+		}
+		public boolean cambiarClave(String correo, String newpwd) {
+			boolean agregado = false;
+			Conexion con=new Conexion();
+			String sql = "UPDATE public.tb_usuario"
+					+ "	SET clave='"+newpwd+"'"
+					+ "	WHERE correo LIKE '%"+correo+"';";
 
+			try {
+				con.Ejecutar(sql);
+				agregado = true;
+			}catch (Exception e) {
+				// TODO: handle exception
+				agregado = false;
+			}
+			return agregado;
+		}
+		
 }

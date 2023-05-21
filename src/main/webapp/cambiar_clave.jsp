@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1" session="true" import="com.ieee.seguridad.*"%>
-<%@ page import="com.ieee.eventos.*" %>
  
 <!DOCTYPE html>
 <html lang="es">
@@ -8,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/styles.css" rel="stylesheet" type="text/css">
-	<title>IEEE CS -Gestión de membresías</title>
+	<title>IEEE CS -Cambio de clave</title>
 </head>
 <body>
 	<header>
@@ -27,7 +26,7 @@
 	</nav>
 	<main>
 		    				<%
-String usuario;
+String usuario="";
 HttpSession sesion = request.getSession();
  if (sesion.getAttribute("usuario") == null) //Se verifica si existe la variable
  {
@@ -53,30 +52,22 @@ HttpSession sesion = request.getSession();
 			<p>
 		</section>
 		<section style="color: black; justify-content: center; align-items: center;" class="normal">
-			<h1>Agregar Membresía</h1>
+			<h1>Cambiar clave</h1>
 		</section>
 		<div style="height: auto; border-radius: 10px;" class="center-content">
-			<%
-				Usuario usr = new Usuario();
-				int id = usr.membresiaMID()+1;
-			%>
-    		<form action="respuestaMembresia.jsp" method="post">
+    		<form action="respuestaClave.jsp" method="post">
 			    <table>
 			      <tr>
-			        <td>ID membresia:</td>
-			        <td><input type="text" name="id_membresia" required="required" value="<%=id %>" readonly="readonly">*</td>
+			        <td>Clave Vieja:</td>
+			        <td><input type="password" name="pwd_old" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Descripcion:</td>
-			        <td><input type="text" name="descripcion" required="required">*</td>
+			        <td>Clave Nueva:</td>
+			        <td><input type="password" name="pwd_new" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Costo Society Member:</td>
-			        <td><input type="text" name="costo_sm" required="required">*</td>
-			      </tr>
-			      <tr>
-			        <td>Costo Society Student Member:</td>
-			        <td><input type="text" name="costo_ssm" required="required">*</td>
+			        <td>Confirmar Clave:</td>
+			        <td><input type="password" name="pwd_newConf" required="required">*</td>
 			      </tr>
 			      <tr>
 			        <td><input type="submit"></td>
