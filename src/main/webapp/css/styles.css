@@ -31,7 +31,6 @@ section {
 aside{
 	width: 50%;
 	float: right;
-	font-size: px;
 	align-items: center;
 	text-align: center;
 	padding-bottom: 15px;
@@ -84,7 +83,7 @@ footer {
 }
 footer li{
 	list-style: none;
-	font: bold 15px trebuchet ms;
+	font: bold 15px "trebuchet ms";
 	padding: 5px;
 	display: inline-block;
 	text-align: center;

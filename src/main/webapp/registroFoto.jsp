@@ -61,6 +61,7 @@ HttpSession sesion = request.getSession();
 			Evento eve = new Evento();
 			out.print(eve.ingresarFoto(id, directorio, alt));
 			%>
+			<br><a href="modificarEvento.jsp">Modificar Eventos</a>
 		</section>
 	</main>
 	<footer style="margin-top: 15px;">
