@@ -42,23 +42,23 @@
     		<form action="verificarRegistro.jsp" method="post" name="formulario">
 			    <table>
 			      <tr>
-			        <td>Nombre:</td>
+			        <td><label for="Nombre">Nombre:</label></td>
 			        <td><input type="text" name="nombre" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Edad:</td>
+			        <td><label for="Edad">Edad:</label></td>
 			        <td><input type="text" name="edad" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Correo:</td>
+			        <td><label for="Correo">Correo:</label></td>
 			        <td><input type="email" name="correo" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Clave:</td>
+			        <td><label for="Clave">Clave:</label></td>
 			        <td><input type="password" name="clave" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Path Foto:</td>
+			        <td><label for="Path Foto">Path Foto:</label></td>
 			        <td><b>Ingresar un formato .jpeg</b><br><input type="text" name="foto" required="required">*</td>
 			      </tr>
 			      <tr>

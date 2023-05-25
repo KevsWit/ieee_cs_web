@@ -63,19 +63,19 @@ HttpSession sesion = request.getSession();
     		<form action="respuestaMembresia.jsp" method="post">
 			    <table>
 			      <tr>
-			        <td>ID membresia:</td>
-			        <td><input type="text" name="id_membresia" required="required" value="<%=id %>" readonly="readonly">*</td>
+			        <td><label for="ID membresía">ID membresía:</label></td>
+			        <td><input type="text" name="id_membresia" required="required" value="<%=id %>" readonly="readonly" >*</td>
 			      </tr>
 			      <tr>
-			        <td>Descripcion:</td>
+			        <td><label for="Descripción">Descripción:</label></td>
 			        <td><input type="text" name="descripcion" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Costo Society Member:</td>
+			        <td><label for="Costo Society Member">Costo Society Member:</label></td>
 			        <td><input type="text" name="costo_sm" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Costo Society Student Member:</td>
+			        <td><label for="Costo Society Student Member">Costo Society Student Member:</label></td>
 			        <td><input type="text" name="costo_ssm" required="required">*</td>
 			      </tr>
 			      <tr>

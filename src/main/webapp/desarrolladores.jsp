@@ -35,7 +35,7 @@
 		</section>
 		<div style="height: auto;" class="center-content">
     		<section class="section-l" style="color: black;">
-      			<img src="images/desarrollador.jpeg" width="300em">
+      			<img src="images/desarrollador.jpeg" width="300em" alt="Foto desarrollador">
     		</section>
 			<aside style="color: black;">
 				<h3 style="text-align: left;">Nombre</h3>

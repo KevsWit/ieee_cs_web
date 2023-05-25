@@ -64,15 +64,15 @@ HttpSession sesion = request.getSession();
 	<form action="editarEvento.jsp" method="post">
 		<table>
 			<tr>
-				<td>Codigo Evento:</td>
+				<td><label for="Código Evento">Código Evento:</label></td>
 				<td><input type="text" name="editarcod" value="<%=cod%>" readonly="readonly"></td>
 			</tr>
 			<tr>
-				<td>Descripcion:</td>
+				<td><label for="Descripción">Descripción:</label></td>
 				<td><input type="text" name="editardesc" value="<%=eve.getDescripcion()%>"></td>
 			</tr>
 			<tr>
-				<td>Tipo:</td>
+				<td><label for="Tipo">Tipo:</label></td>
 				<td><input type="text" name="tipo" value="<%=eve.getId_tipo()%>" readonly="readonly"></td>
 			</tr>
 		</table>

@@ -58,15 +58,15 @@ HttpSession sesion = request.getSession();
     		<form action="respuestaClave.jsp" method="post">
 			    <table>
 			      <tr>
-			        <td>Clave Vieja:</td>
+			        <td><label for="Clave Vieja">Clave Vieja:</label></td>
 			        <td><input type="password" name="pwd_old" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Clave Nueva:</td>
+			        <td><label for="Clave Nueva">Clave Nueva:</label></td>
 			        <td><input type="password" name="pwd_new" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td>Confirmar Clave:</td>
+			        <td><label for="Confirmar Clave">Confirmar Clave:</label></td>
 			        <td><input type="password" name="pwd_newConf" required="required">*</td>
 			      </tr>
 			      <tr>
