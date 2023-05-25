@@ -59,7 +59,7 @@ HttpSession sesion = request.getSession();
 			<%
 		int cod = Integer.parseInt(request.getParameter("cod"));
 		Evento eve = new Evento();
-		eve.ConsulEditarProductos(cod);
+		eve.ConsulEditarEventos(cod);
 	%>
 	<form action="editarEvento.jsp" method="post">
 		<table>

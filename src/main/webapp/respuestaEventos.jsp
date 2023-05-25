@@ -57,7 +57,12 @@ HttpSession sesion = request.getSession();
 			Evento eve=new Evento();
 			String str_tipo=request.getParameter("cmbTipo");
 	  		int tipo=Integer.parseInt(str_tipo);
-	  		out.print(eve.consultarEvento(tipo));
+	  		if (eve.contarEventos(tipo) > 0){
+	  			out.print(eve.consultarEvento(tipo));
+	  		}
+	  		else{
+	  			out.print("No hay eventos registrados de este tipo.");
+	  		}
 			%>
 		</section>
 	</main>

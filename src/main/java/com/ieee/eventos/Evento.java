@@ -208,7 +208,7 @@ public class Evento {
 		}
 		return tabla;
 	}
-	public void ConsulEditarProductos(int cod) {
+	public void ConsulEditarEventos(int cod) {
 		Conexion con=new Conexion();
 		ResultSet rs = null;
 		String sql = "SELECT id_evento, descripcion, id_tipo"
@@ -225,6 +225,22 @@ public class Evento {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public int contarEventos(int cod) {
+		int cant=0;
+		String sql = "SELECT count(*) FROM public.tb_evento WHERE id_tipo = "+cod+";";
+		ResultSet rs = null;
+		Conexion con=new Conexion();	
+		rs=con.Consulta(sql);
+		try {
+			while(rs.next()) {
+				cant = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print(e.getMessage());
+		}
+		return cant;
 	}
 	public boolean ModificarEvento(Evento mp) {
 		boolean agregado = false;
