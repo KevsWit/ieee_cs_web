@@ -62,11 +62,11 @@ HttpSession sesion = request.getSession();
 			<form action="registroFoto.jsp" method="post">
 		<table>
 			<tr>
-				<td><label for="Código Evento">Código Evento:</label></td>
+				<td><label for="cod">Código Evento:</label></td>
 				<td><input type="text" name="cod" value="<%=cod%>" readonly="readonly"></td>
 			</tr>
 			<tr>
-				<td><label for="Path Foto">Path Foto:</label></td>
+				<td><label for="foto">Path Foto:</label></td>
 			    <td><b>Ingresar un formato .jpeg</b><br><input type="text" name="foto" required="required"></td>
 			</tr>
 			<tr>

@@ -59,15 +59,15 @@ HttpSession sesion = request.getSession();
 	<form action="verificarPostulacion.jsp" method="post">
 		<table>
 			<tr>
-				<td><label for="Aficiones">Aficiones:</label></td>
+				<td><label for="aficiones">Aficiones:</label></td>
 				<td><input type="text" name="aficiones" required="required">*</td>
 			</tr>
 			<tr>
-				<td><label for="Lenguajes de programación conocidos">Lenguajes de programación conocidos:</label></td>
+				<td><label for="lenguajes">Lenguajes de programación conocidos:</label></td>
 				<td><input type="text" name="lenguajes" required="required">*</td>
 			</tr>
 			<tr>
-				<td><label for="Path del CV en pdf">Path del CV (formato .pdf):</label></td>
+				<td><label for="pdf">Path del CV (formato .pdf):</label></td>
 				<td><input type="text" name="pdf" required="required">*</td>
 			</tr>
 			<tr>

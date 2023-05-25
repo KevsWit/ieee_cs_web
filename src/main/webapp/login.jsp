@@ -37,11 +37,11 @@
     		<form action="verificarLogin.jsp" method="post" name="formulario">
 			    <table>
 			      <tr>
-			        <td><label for="Correo">Correo:</label></td>
+			        <td><label for="correo">Correo:</label></td>
 			        <td><input type="email" name="correo" required="required">*</td>
 			      </tr>
 			      <tr>
-			        <td><label for="Clave">Clave:</label></td>
+			        <td><label for="clave">Clave:</label></td>
 			        <td><input type="password" name="clave" required="required">*</td>
 			      </tr>
 			      <tr>
